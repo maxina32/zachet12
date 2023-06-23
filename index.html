@@ -36,7 +36,7 @@
         const tablelog = document.getElementById("tablelog").getElementsByTagName('tbody')[0];
         const getall = document.getElementById("getall");
         async function UpdateDB() {
-            const response = await fetch("http://"+location.host+":5000/DataBase_update", {
+            const response = await fetch("http://"+location.host+":5001/DataBase_update", {
                 method: 'POST'
             });
 
@@ -45,14 +45,14 @@
         async function DataBase_get_log() {
             var response;
             if (!getall.checked) {
-                response = await fetch("http://"+location.host+":5000/DataBase_get_log?" + new URLSearchParams({
+                response = await fetch("http://"+location.host+":5001/DataBase_get_log?" + new URLSearchParams({
                     from: startdate.value.slice(0, 10) + '-' + startdate.value.slice(11, 13) + '-' + startdate.value.slice(14) + '-00',
                     to: enddate.value.slice(0, 10) + '-' + enddate.value.slice(11, 13) + '-' + enddate.value.slice(14) + '-00'
                 }), {
                     method: 'GET',
                 });
             } else {
-                response = await fetch("http://"+location.host+":5000/DataBase_get_log?" + new URLSearchParams({
+                response = await fetch("http://"+location.host+":5001/DataBase_get_log?" + new URLSearchParams({
                     from: "all"
                 }), {
                     method: 'GET',
